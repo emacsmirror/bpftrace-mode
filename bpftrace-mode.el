@@ -5,7 +5,7 @@
 ;; Author: Jay Kamat <jaygkamat@gmail.com>
 ;; Maintainer: Jay Kamat <jaygkamat@gmail.com>
 ;; Version: 0.1.0
-;; Keywords: highlight
+;; Keywords: highlight, c
 ;; URL: http://gitlab.com/jgkamat/bpftrace-mode
 ;; Package-Requires: ((emacs "24.0"))
 
@@ -35,7 +35,7 @@
 (require 'cc-mode)
 
 (defvar bpftrace-mode-map nil
-  "Keymap for bpftrace-mode buffers.")
+  "Keymap for `bpftrace-mode' buffers.")
 (when (not bpftrace-mode-map)
   (setq bpftrace-mode-map (make-sparse-keymap)))
 
@@ -90,7 +90,7 @@
      )
    ;; Also add normal c keywords
    c-font-lock-keywords)
-  "First level font lock keywords for bpftrace-mode.")
+  "First level font lock keywords for `bpftrace-mode'.")
 
 ;;;###autoload
 (define-derived-mode bpftrace-mode c-mode "bpftrace"

@@ -1,0 +1,5 @@
+
+* bpftrace-mode
+
+A simple major mode for bpftrace scripts, providing syntax highlighting and
+indentation.

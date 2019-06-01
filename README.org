@@ -3,3 +3,13 @@
 
 A simple major mode for bpftrace scripts, providing syntax highlighting and
 indentation.
+
+[[https://i.imgur.com/S6Aexbt.png][https://i.imgur.com/S6Aexbt.png]]
+
+* Contributing
+
+If you have a bug or feature request, feel free to send in a patch.
+
+* License
+
+bpftrace-mode is licensed under the GPLv3.

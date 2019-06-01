@@ -49,6 +49,9 @@
 (defvar bpftrace-mode-font-lock-keywords
   (append
    `(
+     ;; Global/per-thread variables
+     (,(rx (or "$" "@") (1+ word)) . font-lock-variable-name-face)
+
      ;; Builtins
      ;; http://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#1-builtins
      (,(regexp-opt '("pid" "tid" "uid" "gid" "nsecs" "elapsed" "cpu" "comm" "kstack" "ustack"
@@ -56,7 +59,7 @@
                      "retval" "func" "probe" "curtask" "rand" "cgroup"
                      "$0" "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9")
                    'words)
-      . font-lock-variable-name-face)
+      . font-lock-keyword-face)
 
      ;; General Functions
      ;; TODO properly handle coloring of overloaded symbols like ustack

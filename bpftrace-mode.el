@@ -49,43 +49,45 @@
 (defvar bpftrace-mode-font-lock-keywords
   (append
    `(
-     ;; Global/per-thread variables
-     (,(rx (or "$" "@") (1+ word)) . font-lock-variable-name-face)
 
      ;; Builtins
      ;; http://github.com/iovisor/bpftrace/blob/master/docs/reference_guide.md#1-builtins
-     (,(regexp-opt '("pid" "tid" "uid" "gid" "nsecs" "elapsed" "cpu" "comm" "kstack" "ustack"
-                     "arg0" "arg1" "arg2" "arg3" "arg4" "arg5" "arg6" "arg7" "arg8" "arg9"
-                     "retval" "func" "probe" "curtask" "rand" "cgroup"
-                     "$0" "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9")
-                   'words)
+     (,(rx bow (or "pid" "tid" "uid" "gid" "nsecs" "elapsed" "cpu" "comm" "kstack" "ustack"
+                   (and "arg" (1+ digit))
+                   "retval" "func" "probe" "curtask" "rand" "cgroup"
+                   (and "$" (1+ digit)))
+           eow)
       . font-lock-keyword-face)
 
+     ;; Global/per-thread variables
+     (,(rx bow (or "$" "@") (1+ word) eow) . font-lock-variable-name-face)
      ;; General Functions
      ;; TODO properly handle coloring of overloaded symbols like ustack
-     (,(regexp-opt '("printf" "time" "join" "str" "ksym" "usym" "kaddr" "uaddr" "reg" "system"
-                     "exit" "cgroupid" "kstack" "ustack" "ntop" "cat")
-                   'words)
+     (,(rx bow
+           (or "printf" "time" "join" "str" "ksym" "usym" "kaddr" "uaddr" "reg" "system"
+               "exit" "cgroupid" "kstack" "ustack" "ntop" "cat")
+           eow)
       . font-lock-builtin-face)
      ;; Map Functions
-     (,(regexp-opt '("count" "sum" "avg" "min" "max" "stats" "hist" "lhist"
-                     "delete" "print" "clear" "zero")
-                   'words)
+     (,(rx bow
+           (or "count" "sum" "avg" "min" "max" "stats" "hist" "lhist"
+               "delete" "print" "clear" "zero")
+           eow)
       . font-lock-builtin-face)
      ;; Ouptut functions
-     (,(regexp-opt '("printf" "interval" "hist")
-                   'words)
+     (,(rx bow (or "printf" "interval" "hist") eow)
       . font-lock-builtin-face)
      ;; Probes
-     (,(regexp-opt '("BEGIN" "END"
-                     "kprobe" "kretprobe"
-                     "uprobe" "uretprobe"
-                     "tracepoint" "usdt"
-                     ;; TODO what to do about shortforms?
-                     "t"
-                     "profile" "interval"
-                     "software" "hardware")
-                   'words)
+     (,(rx bow
+           (or "BEGIN" "END"
+               "kprobe" "kretprobe"
+               "uprobe" "uretprobe"
+               "tracepoint" "usdt"
+               ;; TODO what to do about shortforms?
+               "t"
+               "profile" "interval"
+               "software" "hardware")
+           eow)
       . font-lock-constant-face)
      )
    ;; Also add normal c keywords

@@ -84,7 +84,7 @@
                "uprobe" "uretprobe"
                "tracepoint" "usdt"
                ;; TODO what to do about shortforms?
-               "t"
+               "t" "k" "kr" "u" "ur" "p" "h" "s" "i"
                "profile" "interval"
                "software" "hardware")
            eow)

@@ -60,7 +60,7 @@
       . font-lock-keyword-face)
 
      ;; Global/per-thread variables
-     (,(rx bow (or "$" "@") (1+ word) eow) . font-lock-variable-name-face)
+     (,(rx bow (or (and "$" word) "@") (0+ word) eow) . font-lock-variable-name-face)
      ;; General Functions
      ;; TODO properly handle coloring of overloaded symbols like ustack
      (,(rx bow
@@ -101,7 +101,7 @@
   (setq font-lock-defaults
         '(bpftrace-mode-font-lock-keywords
           nil nil
-          ((?_ . "w") (?$ . "w"))))
+          ((?_ . "w") (?$ . "w") (?@ . "w"))))
   (use-local-map bpftrace-mode-map))
 
 ;;;###autoload

@@ -34,10 +34,8 @@
 
 (require 'cc-mode)
 
-(defvar bpftrace-mode-map nil
+(defvar bpftrace-mode-map (make-sparse-keymap)
   "Keymap for `bpftrace-mode' buffers.")
-(when (not bpftrace-mode-map)
-  (setq bpftrace-mode-map (make-sparse-keymap)))
 
 (defvar bpftrace-mode-syntax-table
   (let ((table (make-syntax-table c-mode-syntax-table)))

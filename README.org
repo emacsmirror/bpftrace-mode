@@ -1,5 +1,4 @@
-
-* bpftrace-mode
+* bpftrace-mode [[https://melpa.org/#/bpftrace-mode][file:https://melpa.org/packages/bpftrace-mode-badge.svg]]
 
 A simple major mode for [[https://github.com/iovisor/bpftrace][bpftrace]] scripts, providing syntax highlighting and
 indentation.
